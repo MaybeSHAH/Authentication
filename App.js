@@ -15,12 +15,17 @@ import {
   Image
 } from 'react-native';
 import Navigation from './src/navigation';
-import Onboarding from './src/components/Onboarding';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import slides from './slides';
 import {COLORS, SIZES} from './src/constants/theme';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from './src/components/SplashScreen';
 
 const App = () => {
+  //SafeArea Calculations
+  
+
+  //below code for boarding
   const [showHomePage, setShowHomePage] = useState(false);
   const buttonLabel = (label) => {
     return(
@@ -81,9 +86,9 @@ const App = () => {
 
   }
   return (
-    <SafeAreaView style={styles.root}>
-      <Onboarding />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SplashScreen />
+    </SafeAreaProvider>
   );
 };
 
