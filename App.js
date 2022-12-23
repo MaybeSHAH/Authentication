@@ -6,18 +6,83 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
+  StyleSheet, 
   Text,
+  View,
+  Image
 } from 'react-native';
 import Navigation from './src/navigation';
+import Onboarding from './src/components/Onboarding';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import slides from './slides';
+import {COLORS, SIZES} from './src/constants/theme';
 
 const App = () => {
+  const [showHomePage, setShowHomePage] = useState(false);
+  const buttonLabel = (label) => {
+    return(
+      <View style={styles.label}>
+        <Text style= {{ 
+          color: COLORS.title,
+          fontWeight: '600',
+          fontSize: SIZES.h4,
+        }}>
+          {label}
+        </Text>
+      </View>
+    )
+  }
+
+  if(!showHomePage){
+    return(
+      <AppIntroSlider 
+        data={ slides }
+        renderItem={({item})=> {
+          return(
+            <View style={{
+              flex:1,
+              alignItems: 'center',
+              padding: 15,
+              paddingTop: 100,
+            }}>
+              <Image 
+                source={item.image}
+                style={{
+                  width: SIZES.width - 80,
+                  height: 400,
+                }}
+                resizeMode= 'contain'
+              />
+              <Text style={{
+                fontWeight: 'bold',
+                color: COLORS.title,
+                fontSize: SIZES.h1,
+              }}>
+                {item.title}
+              </Text>
+              <Text style={styles.description}>
+                {item.description}
+              </Text>
+            </View>
+          )
+        }}
+        activeDotStyle={styles.dotstyle}
+        renderNextButton={()=> buttonLabel("Next")}
+        renderSkipButton={()=> buttonLabel("Skip")}
+        renderDoneButton={()=> buttonLabel("Done")}
+        onDone={() => {
+          setShowHomePage(true);
+        }}
+      />
+    )
+
+  }
   return (
     <SafeAreaView style={styles.root}>
-      <Navigation />
+      <Onboarding />
     </SafeAreaView>
   );
 };
@@ -25,7 +90,21 @@ const App = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F9FBFC'
+  },
+  description:{
+    textAlign: 'center',
+    paddingTop: 5,
+    color: COLORS.title
+  },
+  dotstyle:{
+    backgroundColor: COLORS.primary,
+    width: 30
+  },
+  label: {
+    padding: 12
   }
 });
 
