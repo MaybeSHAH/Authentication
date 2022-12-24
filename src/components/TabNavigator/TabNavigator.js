@@ -3,37 +3,33 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../screens/HomeScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
 import Navigation from '../../navigation';
+import {COLORS} from '../../constants/theme';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{
-        headerShown: false,                                                           
+    <Tab.Navigator screenOptions={({route}) => ({
+        headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: { backgroundColor: '#AD40AF'},
-        tabBarInactiveTintColor: '#fff',
-        tabBarActiveTintColor: 'yellow'
-    }}>
-        <Tab.Screen name="Home" component={HomeScreen} options={{
-            tabBarIcon: ({color, size}) => (
-                <Ionicons name="home-outline" color={color} size={size} />
-            )
-        }} />
-        <Tab.Screen name="Reservation" component={HomeScreen} options={{
-            tabBarBadge: 3,
-            tabBarBadgeStyle: { backgroundColor: 'yellow'},
-            tabBarIcon: ({color, size}) => (
-                <Feather name="shopping-bag" color={color} size={size} />
-            )
-        }} />
-        <Tab.Screen name="Profile" component={Navigation} options={{
-            tabBarIcon: ({color, size}) => (
-                <Ionicons name="heart-outline" color={color} size={size} />
-            )
-        }} />
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+
+            if(route.name === "Home"){
+                iconName = focused ? 'ios-home-sharp' : 'ios-home-outline';
+            } else if(route.name === "Reservation"){
+                iconName = focused ? 'settings' : 'settings-outline';
+            } else if(route.name === "Profile") {
+                iconName = focused ? 'wallet' : 'wallet-outline';
+            }
+            return <Ionicons name={iconName} size={22} color={color} />
+        },
+    })}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Reservation" component={HomeScreen} />
+        <Tab.Screen name="Profile" component={Navigation}  />
     </Tab.Navigator>
   )
 }
