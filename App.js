@@ -8,13 +8,12 @@
 
 import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet, 
   Text,
   View,
   Image
 } from 'react-native';
-import Navigation from './src/navigation';
+import { NavigationContainer } from '@react-navigation/native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import slides from './slides';
 import {COLORS, SIZES} from './src/constants/theme';
@@ -86,9 +85,12 @@ const App = () => {
 
   }
   return (
-    <SafeAreaProvider>
-      <SplashScreen />
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <SplashScreen />
+      </SafeAreaProvider>
+    </NavigationContainer>
+    
   );
 };
 

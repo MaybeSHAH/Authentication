@@ -2,7 +2,7 @@ import { Animated, View, Text, Image, StyleSheet, Dimensions } from 'react-nativ
 import React, { useRef, useEffect } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Logo from '../../assets/images/Logo_1.png';
-import Navigation from '../../navigation';
+import TabNavigator from '../TabNavigator';
 
 const BGColor = "#4D4A95";
 
@@ -118,7 +118,9 @@ const SplashScreen = () => {
         backgroundColor: 'rgba(0,0,0,0.04)',
         zIndex: 0
     }}>
-        <Navigation />
+        
+        <TabNavigator />
+        
     </Animated.View>
     </View>
   )
