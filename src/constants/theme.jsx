@@ -3,13 +3,16 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get('screen');
 
 export const COLORS = {
-    primary: '#f52d56',
-    title: '#072F4A',
+    gradientForm: '#A376F1',
+    primary: '#7d5fff',
     white: '#FFFFFF',
-    lightGrey: '#D3D6D6',
-    grey: '#C1C0C9',
-    blue: '#087BB6',
-    yellow: '#F4D03F',
+    dark: '#444',
+    bgColor: '#82ccdd',
+    warning: '#f0d500',
+    danger: '#FF0D0E',
+    gray: '#666666',
+    grayLight: '#ccc',
+    black: '#0a0a0a',
 };
 
 export const SIZES = {
