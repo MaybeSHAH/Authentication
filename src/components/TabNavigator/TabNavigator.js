@@ -15,7 +15,7 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarInactiveTintColor: COLORS.dark,
-        tabBarStyle: styles.tabBarStyle,
+        //tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: COLORS.primary,
         tabBarIcon: ({focused, color, size}) => {
             let iconName;
@@ -27,17 +27,18 @@ const TabNavigator = () => {
             } else if(route.name === "Profile") {
                 iconName = focused ? 'wallet' : 'wallet-outline';
             }
-            return <Ionicons name={iconName} size={22} color={color} />
+            return <Ionicons name={iconName} size={24} color={color} />
         },
     })}>
         <Tab.Screen name="Home" component={HomeScreen} options={{
-            tabBarButton: props => <CustomTabBarButton {...props} />,
+            //tabBarButton: props => <CustomTabBarButton {...props} />,
         }} />
         <Tab.Screen name="Reservation" component={HomeScreen} options={{
-            tabBarButton: props => <CustomTabBarButton {...props} />,
+            //tabBarButton: props => <CustomTabBarButton {...props} />,
         }} />
         <Tab.Screen name="Profile" component={Navigation} options={{
-            tabBarButton: props => <CustomTabBarButton {...props} />,
+            //tabBarLabel: '',
+            //tabBarButton: props => <CustomTabBarButton {...props} />,
         }} />
     </Tab.Navigator>
   )
@@ -47,8 +48,9 @@ export default TabNavigator
 
 const styles = StyleSheet.create({
     tabBarStyle: {
+        flex:1,
         position: 'absolute',
-        backgroundColor: 'transparent',
+        backgroundColor: COLORS.transparent,
         borderTopWidth: 0,
         bottom: 15,
         right: 10,

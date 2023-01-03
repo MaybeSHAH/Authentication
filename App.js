@@ -5,7 +5,6 @@
  * @format
  * @flow strict-local
  */
-
 import React, { useState } from 'react';
 import {
   StyleSheet, 
@@ -19,6 +18,9 @@ import slides from './slides';
 import {COLORS, SIZES} from './src/constants/theme';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SplashScreen from './src/components/SplashScreen';
+import { AuthProvider } from './src/context/AuthContext';
+import AuthStack from './src/navigation/AuthStack';
+import AppStack from './src/navigation/AppStack';
 
 const App = () => {
   //SafeArea Calculations
@@ -85,11 +87,16 @@ const App = () => {
 
   }
   return (
-    <NavigationContainer>
-      <SafeAreaProvider>
+    <AuthProvider>
+        <NavigationContainer>
+      {/* <SafeAreaProvider>
         <SplashScreen />
-      </SafeAreaProvider>
-    </NavigationContainer>
+      </SafeAreaProvider> */}
+      <AppStack />
+      {/* <AuthStack /> */}
+      </NavigationContainer>
+    </AuthProvider>
+    
     
   );
 };

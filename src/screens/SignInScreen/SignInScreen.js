@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
 import Logo from '../../assets/images/Logo_1.png';
 import CustomInput from "../../components/CustomInput/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import SocialSignInButtons from "../../components/SocialSignInButtons";
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from "../../context/AuthContext";
 
 const SignInScreen = () => {
     const [username, setUsername ] = useState('');
     const [password, setPassword ] = useState('');
-
+    const {login} = useContext(AuthContext);
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
 
@@ -40,7 +41,7 @@ const SignInScreen = () => {
                 secureTextEntry={true}
             />
 
-            <CustomButton text="Sign In" onPress={onSignInPressed} />
+            <CustomButton text="Sign In" onPress={() => login()} />
             <CustomButton text="Forgot password?" onPress={onForgotPasswordPressed} type="TERTIARY" />
             <SocialSignInButtons />
             <CustomButton 
