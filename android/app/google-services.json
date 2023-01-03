@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1084633389960",
+    "project_id": "mrcarswash",
+    "storage_bucket": "mrcarswash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084633389960:android:440a4e94600714a98bf83d",
+        "android_client_info": {
+          "package_name": "com.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084633389960-kbkggp2nnsstut0b6hcke6rvbcio4uje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSktTKy--aSGzNII3Q2qDV4PHcM3-nrx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084633389960-kbkggp2nnsstut0b6hcke6rvbcio4uje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

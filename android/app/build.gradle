@@ -1,5 +1,9 @@
 apply plugin: "com.android.application"
 
+// new code
+apply plugin: "com.google.gms.google-services"
+// new code
+
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
@@ -255,6 +259,12 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    // new code 
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+
+    implementation 'com.google.firebase:firebase-analytics'
+    // new code 
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
