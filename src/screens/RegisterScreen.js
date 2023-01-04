@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,6 +11,7 @@ import {
 import DatePicker from 'react-native-date-picker';
 
 import InputField from '../components/InputField';
+import { AuthContext } from '../navigation/AuthProvider';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,12 +20,18 @@ import RegistrationSVG from '../assets/images/misc/registration.svg';
 import GoogleSVG from '../assets/images/misc/google.svg';
 import FacebookSVG from '../assets/images/misc/facebook.svg';
 import TwitterSVG from '../assets/images/misc/twitter.svg';
-import CustomButton from '../components/CustomButton';
+import CustommButton from '../components/CustommButton';
 
 const RegisterScreen = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [dobLabel, setDobLabel] = useState('Date of Birth');
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
+
+  const { register } = useContext(AuthContext);
 
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
@@ -96,7 +103,8 @@ const RegisterScreen = ({navigation}) => {
         </Text>
 
         <InputField
-          label={'Full Name'}
+          labelValue={username}
+          label={"Username"}
           icon={
             <Ionicons
               name="person-outline"
@@ -105,22 +113,30 @@ const RegisterScreen = ({navigation}) => {
               style={{marginRight: 5}}
             />
           }
+          onChangeText={(name)=> setUsername(name)}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <InputField
-          label={'Email ID'}
+          labelValue={email}
+          label={'Email'}
           icon={
-            <MaterialIcons
-              name="alternate-email"
+            <Ionicons
+              name="mail-outline"
               size={20}
               color="#666"
               style={{marginRight: 5}}
             />
           }
           keyboardType="email-address"
+          onChangeText={(userEmail)=> setEmail(userEmail)}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <InputField
+          labelValue={password}
           label={'Password'}
           icon={
             <Ionicons
@@ -131,9 +147,11 @@ const RegisterScreen = ({navigation}) => {
             />
           }
           inputType="password"
+          onChangeText={(pass)=> setPassword(pass)}
         />
 
         <InputField
+          labelValue={confirmPassword}
           label={'Confirm Password'}
           icon={
             <Ionicons
@@ -144,9 +162,10 @@ const RegisterScreen = ({navigation}) => {
             />
           }
           inputType="password"
+          onChangeText={(pass)=> setConfirmPassword(pass)}
         />
 
-        <View
+        {/* <View
           style={{
             flexDirection: 'row',
             borderBottomColor: '#ccc',
@@ -165,7 +184,7 @@ const RegisterScreen = ({navigation}) => {
               {dobLabel}
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <DatePicker
           modal
@@ -184,7 +203,7 @@ const RegisterScreen = ({navigation}) => {
           }}
         />
 
-        <CustomButton label={'Register'} onPress={() => {}} />
+        <CustommButton label={'Register'} onPress={() => register(email, password, username)} />
 
         <View
           style={{

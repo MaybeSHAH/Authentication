@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   View,
   Text,
+  ScrollView,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
@@ -21,7 +22,7 @@ import InputField from '../components/InputField';
 const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
-      <View style={{paddingHorizontal: 25}}>
+      <ScrollView style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center'}}>
           <LoginSVG
             height={300}
@@ -44,8 +45,8 @@ const LoginScreen = ({navigation}) => {
         <InputField
           label={'Email ID'}
           icon={
-            <MaterialIcons
-            name="alternate-email"
+            <Ionicons
+            name="mail-outline"
             size={20}
             color="#666"
             style={{marginRight: 5}}
@@ -127,7 +128,7 @@ const LoginScreen = ({navigation}) => {
             <Text style={{color: '#AD40AF', fontWeight: '700'}}> Register</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

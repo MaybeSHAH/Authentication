@@ -12,15 +12,10 @@ import {
   View,
   Image
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import slides from './slides';
 import {COLORS, SIZES} from './src/constants/theme';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SplashScreen from './src/components/SplashScreen';
-import { AuthProvider } from './src/context/AuthContext';
-import AuthStack from './src/navigation/AuthStack';
-import AppStack from './src/navigation/AppStack';
+import Providers from './src/navigation';
 
 const App = () => {
   //SafeArea Calculations
@@ -87,17 +82,7 @@ const App = () => {
 
   }
   return (
-    <AuthProvider>
-        <NavigationContainer>
-      {/* <SafeAreaProvider>
-        <SplashScreen />
-      </SafeAreaProvider> */}
-      <AppStack />
-      {/* <AuthStack /> */}
-      </NavigationContainer>
-    </AuthProvider>
-    
-    
+    <Providers />
   );
 };
 
