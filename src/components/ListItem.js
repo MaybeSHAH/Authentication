@@ -49,8 +49,7 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
           fontFamily: 'Roboto-Medium',
           fontSize: 14,
         }}>
-          {isFree == 'Yes' && 'Play'}
-          {isFree == 'No' && price}
+          Details
         </Text>
       </TouchableOpacity>
     </View>

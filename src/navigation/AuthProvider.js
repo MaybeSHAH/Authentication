@@ -7,11 +7,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [data, setData] = useState(null);
   return (
     <AuthContext.Provider
         value={{
             user,
             setUser,
+            data,
+            setData,
             login: async (email, password) => {
                 try{
                     await auth().signInWithEmailAndPassword(email, password)
@@ -36,6 +39,7 @@ export const AuthProvider = ({ children }) => {
                             // ******** Now we need to grap a snapshot from the DB to validate account creation and update the redux store locally ********
                             database().ref('users/' + authData.user.uid).once('value').then(function (snapshot) {
                                 updatedUser = snapshot.val();
+                                console.log("UpdatedUser::", updatedUser);
                             }).then(()=>{
                                 setUser(updatedUser)
                             })

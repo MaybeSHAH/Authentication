@@ -17,7 +17,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const CustomDrawer = props => {
-  const { user, logout } = useContext(AuthContext);
+  const { data, logout } = useContext(AuthContext);
 
   return (
     <View style={{flex: 1}}>
@@ -39,7 +39,7 @@ const CustomDrawer = props => {
               marginBottom: 5,
             }}>
             {/* { console.log("USERR::", user)} */}
-            John Doe
+            {data?.username}
           </Text>
           {/* <View style={{flexDirection: 'row'}}>
             <Text

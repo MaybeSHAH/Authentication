@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -10,17 +10,17 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
-
+import { AuthContext } from '../navigation/AuthProvider';
 import BannerSlider from '../components/BannerSlider';
 import {windowWidth} from '../utils/Dimensions';
 
-import {freeGames, paidGames, sliderData} from '../model/data';
+import {basicServices, proServices, sliderData} from '../model/data';
 import CustomSwitch from '../components/CustomSwitch';
 import ListItem from '../components/ListItem';
 
 export default function HomepageScreen({navigation}) {
   const [gamesTab, setGamesTab] = useState(1);
-
+  const {data} = useContext(AuthContext);
   const renderBanner = ({item, index}) => {
     return <BannerSlider data={item} />;
   };
@@ -39,7 +39,7 @@ export default function HomepageScreen({navigation}) {
             marginBottom: 20,
           }}>
           <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
-            Hello John Doe
+            Hello {data?.username}
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <ImageBackground
@@ -97,14 +97,14 @@ export default function HomepageScreen({navigation}) {
         <View style={{marginVertical: 20}}>
           <CustomSwitch
             selectionMode={1}
-            option1="Free to play"
-            option2="Paid games"
+            option1="Basic"
+            option2="Pro"
             onSelectSwitch={onSelectSwitch}
           />
         </View>
 
         {gamesTab == 1 &&
-          freeGames.map(item => (
+          basicServices.map(item => (
             <ListItem
               key={item.id}
               photo={item.poster}
@@ -120,7 +120,7 @@ export default function HomepageScreen({navigation}) {
             />
           ))}
         {gamesTab == 2 &&
-          paidGames.map(item => (
+          proServices.map(item => (
             <ListItem
               key={item.id}
               photo={item.poster}

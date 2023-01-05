@@ -9,7 +9,7 @@ import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 
 const Routes = () => {
-    const {user, setUser} = useContext(AuthContext);
+    const {user, setUser, data, setData} = useContext(AuthContext);
     const [initializing, setInitializing] = useState(true);
 
     const onAuthStateChanged = user => {
@@ -19,15 +19,17 @@ const Routes = () => {
     const loginRequest = user => {
         database().ref('users/' + user.uid).once('value').then(function (snapshot){
             let username = snapshot.val();
-            {!username.account ? console.log('errrrr') : console.log("DATA::", username.account)}
+            !username.account ? console.log('errrrr') : setData(username.account)
         }).catch(err => console.log("Routes Err::",err));
     };
 
     useEffect(()=> {
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        // user && loginRequest(user);
         return subscriber; //unsubscribe on unmount
     }, []);
+    useEffect(()=> {
+        user && loginRequest(user);
+    }, [user]);
     
     if(initializing) return null;
 

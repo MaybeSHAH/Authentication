@@ -1,19 +1,23 @@
 export const sliderData = [
   {
-    title: 'First Game',
-    image: require('../assets/images/homescreen/game-1.jpeg'),
+    title: 'First Service',
+    image: require('../assets/images/homescreen/service-1.jpg'),
   },
   {
-    title: 'Second Game',
-    image: require('../assets/images/homescreen/game-2.jpeg'),
+    title: 'Second Service',
+    image: require('../assets/images/homescreen/service-2.webp'),
   },
   {
-    title: 'Third Game',
-    image: require('../assets/images/homescreen/game-3.png'),
+    title: 'Third Service',
+    image: require('../assets/images/homescreen/service-3.jpg'),
+  },
+  {
+    title: 'Fourth Service',
+    image: require('../assets/images/homescreen/service-4.jpg'),
   },
 ];
 
-export const paidGames = [
+export const proServices = [
   {
     poster: require('../assets/images/spiderman.webp'),
     title: 'Spider-Man',
@@ -64,47 +68,34 @@ export const paidGames = [
   },
 ];
 
-export const freeGames = [
+export const basicServices = [
   {
-    poster: require('../assets/images/Altos-Odyssey.jpeg'),
-    title: 'Altos Odyssey',
-    subtitle: 'Noodlecake Studios',
+    poster: require('../assets/images/quick-bucket.png'),
+    title: 'Bucket Wash',
+    subtitle: 'Quick Bucket Wash',
     isFree: 'Yes',
     id: '1',
   },
   {
-    poster: require('../assets/images/asphalt-9.jpeg'),
-    title: 'Asphalt 9',
-    subtitle: 'Gameloft',
+    poster: require('../assets/images/pressure-wash.webp'),
+    title: 'Pressure Wash',
+    subtitle: 'Pressure Gun Wash',
     isFree: 'Yes',
     id: '2',
   },
   {
-    poster: require('../assets/images/genshin-impact.jpeg'),
-    title: 'Genshin Impact',
-    subtitle: 'miHoYo',
+    poster: require('../assets/images/tyre-polish.webp'),
+    title: 'Tyre Polish',
+    subtitle: 'Tyre & Plastic Parts Polish',
     isFree: 'Yes',
     id: '3',
   },
   {
-    poster: require('../assets/images/fortnite.webp'),
-    title: 'Fortnite',
-    subtitle: 'Epic Games',
+    poster: require('../assets/images/interior-wash.jpg'),
+    title: 'Interior Wash',
+    subtitle: 'Interior Wash & Cleaning',
     isFree: 'Yes',
     id: '4',
   },
-  {
-    poster: require('../assets/images/pokemon-unite.jpeg'),
-    title: 'Pokémon Unite',
-    subtitle: 'The Pokémon Company',
-    isFree: 'Yes',
-    id: '5',
-  },
-  {
-    poster: require('../assets/images/diablo-4.jpeg'),
-    title: 'Diablo 4',
-    subtitle: 'Blizzard Entertainment',
-    isFree: 'No',
-    id: '6',
-  },
+  
 ];
