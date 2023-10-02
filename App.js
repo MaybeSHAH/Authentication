@@ -1,28 +1,22 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet, 
   Text,
   View,
   Image
 } from 'react-native';
+import { storeData, getItemFor } from './src/helpers/storageHelper';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import slides from './slides';
 import {COLORS, SIZES} from './src/constants/theme';
 import Providers from './src/navigation';
+const HAS_LAUNCHED = "HAS_LAUNCHED";
 
 const App = () => {
   //SafeArea Calculations
-  
 
   //below code for boarding
-  const [showHomePage, setShowHomePage] = useState(false);
+  const [hasLaunched, setHasLaunched] = useState(false);
   const buttonLabel = (label) => {
     return(
       <View style={styles.label}>
@@ -36,8 +30,17 @@ const App = () => {
       </View>
     )
   }
+  useEffect(()=> {
+    const getData = async() => {
+      const isExist = await getItemFor(HAS_LAUNCHED);
+      if(isExist) setHasLaunched(true);
+      else await storeData(HAS_LAUNCHED, "true");
+    }
 
-  if(!showHomePage){
+    getData().catch(error => {console.log(error)})
+  }, []);
+
+  if(!hasLaunched){
     return(
       <AppIntroSlider 
         data={ slides }
@@ -75,7 +78,7 @@ const App = () => {
         renderSkipButton={()=> buttonLabel("Skip")}
         renderDoneButton={()=> buttonLabel("Done")}
         onDone={() => {
-          setShowHomePage(true);
+          setHasLaunched(true);
         }}
       />
     )

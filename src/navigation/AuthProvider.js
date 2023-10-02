@@ -17,9 +17,10 @@ export const AuthProvider = ({ children }) => {
             setData,
             login: async (email, password) => {
                 try{
+                    console.log(email, password);
                     await auth().signInWithEmailAndPassword(email, password)
                 } catch(e) {
-                    console.log(e);
+                    console.log("ERROR:: ", e);
                 }   
             },
             register: async (email, password, username) => {
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                         let account = {}
                         account.email = email.toLowerCase();
                         account.uid = authData.user.uid;
-                        account.username = username;
+                        account.displayName = username;
                         database().ref('users/' + authData.user.uid).set({account})
                         .then(()=>{
                             let updatedUser;

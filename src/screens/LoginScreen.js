@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { AuthContext } from '../navigation/AuthProvider';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -20,6 +21,9 @@ import CustommButton from '../components/CustommButton';
 import InputField from '../components/InputField';
 
 const LoginScreen = ({navigation}) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const { login } = useContext(AuthContext);
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <ScrollView style={{paddingHorizontal: 25}}>
@@ -43,6 +47,7 @@ const LoginScreen = ({navigation}) => {
         </Text>
 
         <InputField
+          labelValue={email}
           label={'Email ID'}
           icon={
             <Ionicons
@@ -53,9 +58,13 @@ const LoginScreen = ({navigation}) => {
           />
           }
           keyboardType="email-address"
+          onChangeText={(userEmail)=> setEmail(userEmail)}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
 <InputField
+          labelValue={password}
           label={'Password'}
           icon={
             <Ionicons
@@ -68,9 +77,12 @@ const LoginScreen = ({navigation}) => {
           inputType="password"
           fieldButtonLabel={"Forgot?"}
           fieldButtonFunction={() => {}}
+          onChangeText={(pswd)=> setPassword(pswd)}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         
-        <CustommButton label={"Login"} onPress={() => {}} />
+        <CustommButton label={"Login"} onPress={() => login(email, password)} />
 
         <Text style={{textAlign: 'center', color: '#666', marginBottom: 30}}>
           Or, login with ...
