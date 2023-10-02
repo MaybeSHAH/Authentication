@@ -39,7 +39,7 @@ const CustomDrawer = props => {
               marginBottom: 5,
             }}>
             {/* { console.log("USERR::", user)} */}
-            {data?.username}
+            {data?.displayName}
           </Text>
           {/* <View style={{flexDirection: 'row'}}>
             <Text
