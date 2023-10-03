@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useMemo} from 'react';
 import {
   View,
   Text,
@@ -28,6 +28,9 @@ export default function HomepageScreen({navigation}) {
   const onSelectSwitch = value => {
     setGamesTab(value);
   };
+  const srcData = useMemo(()=> {
+    return data.photo ? {uri: data.photo} : require('../assets/images/user-profile.jpg'); 
+  }, [data]);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -39,11 +42,11 @@ export default function HomepageScreen({navigation}) {
             marginBottom: 20,
           }}>
           <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
-            Hello {data?.username}
+            Hello {data?.displayName}
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <ImageBackground
-              source={require('../assets/images/user-profile.jpg')}
+              source={srcData}
               style={{width: 35, height: 35}}
               imageStyle={{borderRadius: 25}}
             />

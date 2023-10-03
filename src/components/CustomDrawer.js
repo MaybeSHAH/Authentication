@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,9 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const CustomDrawer = props => {
   const { data, logout } = useContext(AuthContext);
-
+  const srcData = useMemo(()=> {
+    return data.photo ? {uri: data.photo} : require('../assets/images/user-profile.jpg'); 
+  }, [data]);
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -28,7 +30,7 @@ const CustomDrawer = props => {
           source={require('../assets/images/menu-bg.jpeg')}
           style={{padding: 20}}>
           <Image
-            source={require('../assets/images/user-profile.jpg')}
+            source={srcData}
             style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
           />
           <Text

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -23,7 +23,8 @@ import InputField from '../components/InputField';
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const { login } = useContext(AuthContext);
+  const { login, signin} = useContext(AuthContext);
+
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <ScrollView style={{paddingHorizontal: 25}}>
@@ -95,7 +96,7 @@ const LoginScreen = ({navigation}) => {
             marginBottom: 30,
           }}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {signin()}}
             style={{
               borderColor: '#ddd',
               borderWidth: 2,

@@ -13,6 +13,7 @@ export const COLORS = {
     gray: '#666666',
     grayLight: '#ccc',
     black: '#0a0a0a',
+    textBg: '#E3E3E3'
 };
 
 export const SIZES = {
