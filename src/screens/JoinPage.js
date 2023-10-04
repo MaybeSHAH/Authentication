@@ -4,6 +4,14 @@ import { COLORS, SIZES } from '../constants/theme';
 
 const JoinPage = ({navigation, route}) => {
     const [amount, setAmount] = useState(100);
+    const [selectedSwitch, setSelectedSwitch] = useState(1);
+    const updateSwitchData = value => {
+        setSelectedSwitch(value);
+        if(value == 1) setAmount(100);
+        else if(value == 2) setAmount(200);
+        else if(value == 3) setAmount(500);
+      };
+
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -23,25 +31,25 @@ const JoinPage = ({navigation, route}) => {
       backgroundColor: '#fff',
       marginBottom: 20,
     }}>
-        <TouchableOpacity style={styles.card} onPress={()=> setAmount(100)}>
+        <TouchableOpacity style={styles.card} onPress={()=> updateSwitchData(1)}>
             <Text style={{textAlign: 'center',
-                color: COLORS.black,
+                color: selectedSwitch == 1 ? '#ff69eb' : COLORS.black,
                 fontWeight: 'bold',
                 fontSize: 18}}>
                 100
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card} onPress={()=> setAmount(200)}>
+        <TouchableOpacity style={styles.card} onPress={()=> updateSwitchData(2)}>
         <Text style={{textAlign: 'center',
-                color: COLORS.black,
+                color: selectedSwitch == 2 ? '#ff69eb' : COLORS.black,
                 fontWeight: 'bold',
                 fontSize: 18}}>
                 200
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card} onPress={()=> setAmount(500)}>
+        <TouchableOpacity style={styles.card} onPress={()=> updateSwitchData(3)}>
         <Text style={{textAlign: 'center',
-                color: COLORS.black,
+                color: selectedSwitch == 3 ? '#ff69eb' : COLORS.black,
                 fontWeight: 'bold',
                 fontSize: 18}}>
                 500
