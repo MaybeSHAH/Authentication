@@ -7,6 +7,7 @@ import HomepageScreen from '../screens/HomepageScreen';
 import CartScreen from '../screens/CartScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import GameDetailsScreen from '../screens/GameDetailsScreen';
+import JoinPage from '../screens/JoinPage';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import Feather from 'react-native-vector-icons/Feather';
@@ -25,6 +26,13 @@ const HomeStack = () => {
       <Stack.Screen
         name="GameDetails"
         component={GameDetailsScreen}
+        options={({route}) => ({
+          title: route.params?.title,
+        })}
+      />
+      <Stack.Screen
+        name="JoinPage"
+        component={JoinPage}
         options={({route}) => ({
           title: route.params?.title,
         })}
