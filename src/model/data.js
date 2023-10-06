@@ -1,19 +1,19 @@
 export const sliderData = [
   {
     title: 'First Service',
-    image: require('../assets/images/homescreen/service-1.jpg'),
+    image: require('../assets/images/virtual-fundraiser-web.jpg'),
   },
   {
     title: 'Second Service',
-    image: require('../assets/images/homescreen/service-2.webp'),
+    image: require('../assets/images/virtual-fundraiser-web.jpg'),
   },
   {
     title: 'Third Service',
-    image: require('../assets/images/homescreen/service-3.jpg'),
+    image: require('../assets/images/virtual-fundraiser-web.jpg'),
   },
   {
     title: 'Fourth Service',
-    image: require('../assets/images/homescreen/service-4.jpg'),
+    image: require('../assets/images/virtual-fundraiser-web.jpg'),
   },
 ];
 
